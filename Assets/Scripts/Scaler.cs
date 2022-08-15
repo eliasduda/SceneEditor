@@ -6,7 +6,6 @@ public class Scaler : MonoBehaviour
 {
     public OVRInput.Button zoomIn, zoomOut;
     public GameObject rig;
-    public float scaleMuliplier;
     private float scale, minScale;
     // Start is called before the first frame update
     void Start()
@@ -18,13 +17,16 @@ public class Scaler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(zoomIn) && scale > minScale)
+        if (OVRInput.GetDown(zoomIn))
         {
-            scale *= 1-scaleMuliplier;
+            scale *= 2;
             rig.transform.localScale = new Vector3(scale, scale, scale);
-        }else if (OVRInput.Get(zoomOut))
+        }else if (OVRInput.GetDown(zoomOut))
         {
-            scale *= 1 + scaleMuliplier;
+            if (scale * 0.5 > minScale)
+            {
+                scale *= 0.5f;
+            }
             rig.transform.localScale = new Vector3(scale, scale, scale);
 
         }

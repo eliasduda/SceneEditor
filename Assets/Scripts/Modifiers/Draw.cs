@@ -82,11 +82,17 @@ public class Draw : Modifier
             }
             Vector3 pPoint = p[points - 1] + (Vector3.up) * RayPointer.GetPointer(currentSide).transform.position.y;
             Vector3 lPoint = RayPointer.GetPointer(currentSide).transform.position;
-            Vector3 pNormal = Vector3.Cross(p[points - 1], p[points - 2]);
+            Vector3 pTol = lPoint - pPoint;
+            Vector3 pNormal = pTol.normalized;
             Vector3 lNormal = RayPointer.GetPointer(currentSide).transform.TransformDirection(Vector3.forward);
             float a = Vector3.Dot((pPoint - lPoint), pNormal);
             float b = Vector3.Dot(lNormal, pNormal);
             Vector3 intersec = (a / b) * lNormal + lPoint;
+
+            float ak = (pPoint - transform.position).magnitude;
+            float angle = Mathf.Rad2Deg *RayPointer.GetPointer(currentSide).transform.rotation.x;
+            float ht = ak / (Mathf.Sin(angle));
+            float height = Mathf.Sqrt(-Mathf.Pow(ak, 2) + Mathf.Pow(ht, 2));
 
             currentShape.transform.localScale = new Vector3(currentShape.transform.localScale.x, intersec.y, currentShape.transform.localScale.z);
 

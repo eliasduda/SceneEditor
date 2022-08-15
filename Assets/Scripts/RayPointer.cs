@@ -72,12 +72,6 @@ public class RayPointer : MonoBehaviour
                     OnPointAt.Invoke(null);
                 }
 
-                if (OVRInput.GetDown(triggerButton))
-                {
-                    Debug.Log("Before Pressed trigger");
-                    OnTriggerPressed.Invoke(side, point);
-                    Debug.Log("Pressed trigger");
-                }
             }
             else
             {
@@ -88,6 +82,13 @@ public class RayPointer : MonoBehaviour
 
                 lR.SetPosition(0, transform.position);
                 lR.SetPosition(1, transform.position + transform.TransformDirection(Vector3.forward) * 100000f);
+            }
+
+            if (OVRInput.GetDown(triggerButton))
+            {
+                Debug.Log("Before Pressed trigger");
+                OnTriggerPressed.Invoke(side, point);
+                Debug.Log("Pressed trigger");
             }
 
             if (OVRInput.GetDown(triggerTouch))
