@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Outputs the Console to a UI Text for Debug purposes
+/// </summary>
 public class DebugDisplay : MonoBehaviour
 {
     Dictionary<string, string> debugLogs = new Dictionary<string, string>();

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that sets the current position of each cursor to the Floor Grid Material
+/// </summary>
 public class Cursor : MonoBehaviour
 {
     public Material floor;

@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enum containing the different sahapes that can be drawn
+/// </summary>
 public enum DrawShape
 {
     Floor, Wall, Sphere
 }
 
+/// <summary>
+/// Moifier that allows to draw a specified shape by setting multiple points with the Raypointer by pressing the trigger
+/// </summary>
 public class Draw : Modifier
 {
     public DrawShape shape;
@@ -33,6 +39,8 @@ public class Draw : Modifier
 
     public override void OnSelectedUpdate()
     {
+        //update the shape with the current "pointed at" point of the Raypointer
+        //point index and shape determine how the shape is modified
         if (points == 1)
         {
             Vector3 endPosition = RayPointer.GetPointer(currentSide).GetPoint();
@@ -103,12 +111,15 @@ public class Draw : Modifier
         }
     }
 
+    //add a new point to the shape
     public void AddPoint(SideLR side, Vector3 point)
     {
+        //if first point
         if(points == 0)
         {
             currentSide = side;
 
+            //instantiate the shape at the points position
             p[points] = point;
             currentShape = Instantiate(defaultShape);
             currentShape.layer = 2;
@@ -117,10 +128,11 @@ public class Draw : Modifier
         }
         if (side == currentSide)
         {
-            points++;
+            points++; 
         }
     }
 
+    //finish the current shape (new shape can be started)
     public void FinishShape()
     {
         if (currentShape != null)

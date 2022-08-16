@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Modifier that allows to place a Camera Object that has a Material wih a renderTexture on it 
+/// The stick y axis allows the adjustment of the camreas FOV
+/// </summary>
 public class CameraPlacer : Modifier
 {
     public GameObject defaultCamera;
@@ -12,6 +16,7 @@ public class CameraPlacer : Modifier
 
     public override void OnSelectedEnd()
     {
+        //destroy any not placed cams
         if (currentCam != null)
         {
             Destroy(currentCam);
@@ -21,6 +26,7 @@ public class CameraPlacer : Modifier
 
     public override void OnSelectedStart()
     {
+        //listen to the trigger of the controller
         RayPointer.right.OnTriggerPressed.AddListener(AddPoint);
         SetupCam();
 
@@ -30,9 +36,11 @@ public class CameraPlacer : Modifier
     {
         if (currentCam != null)
         {
+            //update position and rotation determined by the raypointer controller
             currentCam.transform.position = RayPointer.right.transform.position;
             currentCam.transform.rotation = RayPointer.right.transform.rotation;
 
+            //update FOV determined by stick
             Vector2 axis = RayPointer.right.GetAxis();
             if (currentFOV > 0 && currentFOV < 180)
             {
@@ -54,6 +62,7 @@ public class CameraPlacer : Modifier
         }
     }
 
+    //Sets uo the Camera Object
     public void SetupCam()
     {
         currentCam = Instantiate(defaultCamera, RayPointer.right.transform.position, RayPointer.right.transform.rotation);

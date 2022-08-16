@@ -678,7 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomIn: 1
   zoomOut: 2
-  rig: {fileID: 1807394192}
+  player: {fileID: 0}
 --- !u!114 &1807394198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,9 +693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1807394192}
   teleportVisual: {fileID: 1102114561}
-  teleportButton: 65536
   turn: 1
   turnThreshold: 0.5
+  teleportthreshold: 0.6
 --- !u!20 &20000011356449159 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8671326563352695911, guid: 21bf16d4e371ed2449c5baae1cd65de1, type: 3}
@@ -1337,10 +1337,22 @@ PrefabInstance:
       propertyPath: openButton
       value: 4194304
       objectReference: {fileID: 0}
+    - target: {fileID: 7989447726224405619, guid: 21bf16d4e371ed2449c5baae1cd65de1, type: 3}
+      propertyPath: debugSphere
+      value: 
+      objectReference: {fileID: 6038999643463626535, guid: b04f0257f6836244ca3c97fec4ed52cc, type: 3}
+    - target: {fileID: 8651890382472253516, guid: 21bf16d4e371ed2449c5baae1cd65de1, type: 3}
+      propertyPath: test
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8651890382472253516, guid: 21bf16d4e371ed2449c5baae1cd65de1, type: 3}
       propertyPath: openButton
       value: 16384
       objectReference: {fileID: 0}
+    - target: {fileID: 8651890382472253516, guid: 21bf16d4e371ed2449c5baae1cd65de1, type: 3}
+      propertyPath: debugSphere
+      value: 
+      objectReference: {fileID: 6038999643463626535, guid: b04f0257f6836244ca3c97fec4ed52cc, type: 3}
     - target: {fileID: 8651890382539197857, guid: 21bf16d4e371ed2449c5baae1cd65de1, type: 3}
       propertyPath: m_Layer
       value: 2

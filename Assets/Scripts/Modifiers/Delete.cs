@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Modifier that allows to elete any SceneAsset selected by the right RayPointer
+/// </summary>
 public class Delete : Modifier
 {
     public Color deleteColor;
@@ -16,6 +19,7 @@ public class Delete : Modifier
 
     public override void OnSelectedStart()
     {
+        //listen to the trigger and SceneAsset selectio of the controller
         RayPointer.right.OnTriggerPressed.AddListener(Select);
         RayPointer.right.OnPointAt.AddListener(Point);
         RayPointer.right.CastNormal();

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Moifier that allos to move any SceneAsset selected by the right RayPointer
+/// </summary>
 public class Move : Modifier
 {
     private GameObject selected;

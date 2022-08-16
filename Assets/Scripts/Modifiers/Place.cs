@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Modifier that allows the Placement of a defined Gameobject at the position of the right Raypointer's point
+/// also allows scaleing or rotation via the stick
+/// </summary>
 public class Place : Modifier
 {
     public GameObject obj;
@@ -9,7 +13,7 @@ public class Place : Modifier
     private float size = 1;
     private SideLR activeSide;
     private float rotation = 0;
-    private float threshold = 0.2f;
+    private float threshold = 0.5f;
 
     public override void OnSelectedEnd()
     {
@@ -45,10 +49,10 @@ public class Place : Modifier
         Vector2 axis = RayPointer.GetPointer(activeSide).GetAxis();
         if (Mathf.Abs(axis.y) > threshold)
         {
-            size += axis.y*0.2f;
-            if(size < 0.001f)
+            size += axis.y*0.05f;
+            if(size < 0.01f)
             {
-                size = 0.001f;
+                size = 0.01f;
             }
         }
         if (Mathf.Abs(axis.x) > threshold)
